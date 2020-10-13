@@ -1,0 +1,1 @@
+exception NoApiUrl;

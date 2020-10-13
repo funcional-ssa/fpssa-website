@@ -42,6 +42,25 @@ module GetStaticProps = {
   type t<'props, 'params> = context<'props, 'params> => Promise.t<{"props": 'props}>
 }
 
+module GetServerProps = {
+  type context<'props, 'params> = {
+    params: 'params,
+    query: string,
+    preview: bool,
+    previewData: 'props,
+    resolvedUrl: string
+  };
+
+  type t<'props, 'params> = context<'props, 'params> => Promise.t<{"props": 'props}>
+
+  let unsafelyRemoveUndefined: 'a => 'a
+    = (props) => {
+      %raw(`function(props) {
+        return JSON.parse(JSON.stringify(props))
+      }`)(props)
+    }
+}
+
 module GetStaticPaths = {
   type path<'params> = {params: 'params}
 

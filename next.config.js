@@ -3,7 +3,10 @@ const withTM = require("next-transpile-modules")([
   "@ahrefs/bs-emotion",
   "@minima.app/re-css",
   "reason-promise",
+  "reason-apollo-client"
 ]);
+
+
 
 module.exports = withTM({
   pageExtensions: ["jsx", "js", "bs.js"],

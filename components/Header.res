@@ -1,15 +1,13 @@
-// let styles = ReactDOMRe.Style.make(~marginRight="10px", ());
-
-[@react.component]
+@react.component
 let make = () => {
-  <div className="teste">
+  <nav className="teste">
     <Next.Link href="/">
       <a> {ReasonReact.string("Home")} </a>
     </Next.Link>
     <Next.Link href="/about">
       <a> {ReasonReact.string("About")} </a>
     </Next.Link>
-  </div>;
+  </nav>;
 };
 
 let default = make;
