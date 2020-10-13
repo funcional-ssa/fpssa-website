@@ -1,16 +1,16 @@
-let api = %raw(`process.env.NEXT_PUBLIC_API_URL`)
-let token = %raw(`process.env.NEXT_PUBLIC_API_TOKEN`)
+let api = [%raw {|process.env.NEXT_PUBLIC_API_URL|}];
+let token = [%raw {|process.env.NEXT_PUBLIC_API_TOKEN|}];
 
-open ApolloClient
+open ApolloClient;
 
 let headers = () => {
-  let token = token->Js.Option.getExn
+  let token = token->Js.Option.getExn;
 
-  {"Authorization": "bearer " ++ token}
+  {"Authorization": "bearer " ++ token};
 }
 
 let instance = Js.Option.map((. uri) => {
-  let link = Link.HttpLink.make(~uri=_ => uri, ~headers=Obj.magic(headers()), ())
+  let link = Link.HttpLink.make(~uri=_ => uri, ~headers=Obj.magic(headers()), ());
 
   make(
     ~cache=Cache.InMemoryCache.make(),
@@ -23,5 +23,5 @@ let instance = Js.Option.map((. uri) => {
     ),
     ~link,
     (),
-  )
-}, api)->Js.Option.getExn
+  );
+}, api)->Js.Option.getExn;

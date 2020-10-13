@@ -1,8 +1,8 @@
-@react.component
-let make = () => = {
+[@react.component]
+let make = () => {
   <div>
     <h1 className="home__text">{"Home page!" -> React.string}</h1>
-  </div>
+  </div>;
 }
 
 let default = make;
